@@ -1,107 +1,302 @@
 /* style.css */
 
-/* Cores Base */
-.root {
-    -fx-background-color: #F8F8F8; /* Um cinza bem claro para o fundo geral */
+/* --- Variáveis de Cores (Opcional, mas útil para manutenção) --- */
+:root {
+    -primary-color: #007BFF; /* Azul principal */
+    -secondary-color: #6C757D; /* Cinza secundário */
+    -background-light: #F0F2F5; /* Fundo muito claro */
+    -surface-color: #FFFFFF; /* Superfícies (campos, listas) */
+    -text-color-dark: #343A40; /* Texto principal */
+    -text-color-light: #F8F9FA; /* Texto em fundos escuros */
+    -success-color: #28A745; /* Verde para sucesso/adicionar */
+    -danger-color: #DC3545; /* Vermelho para erro/excluir */
+    -border-color: #CED4DA; /* Cor padrão da borda */
+    -focus-color: #80BDFF; /* Cor de foco */
+
+    /* Variáveis para transições */
+    -transition-duration: 0.3s;
+    -transition-timing-function: ease-in-out;
 }
 
-/* Título Principal */
+/* --- Estilo Base (aplicado a todos os elementos em .root) --- */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif; /* Fonte padrão */
+    -fx-background-color: -background-light;
+}
+
+/* --- Títulos e Labels --- */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-color-dark;
+}
+
+/* Título principal de cada tela */
 .label-title {
-    -fx-font-family: "Segoe UI", sans-serif; /* Fonte moderna e limpa */
     -fx-font-size: 28px;
     -fx-font-weight: bold;
-    -fx-text-fill: #333333; /* Cinza escuro para o texto */
-    -fx-padding: 10px 0 20px 0; /* Espaçamento abaixo do título */
+    -fx-text-fill: -primary-color;
+    -fx-padding: 0 0 10px 0; /* Espaço abaixo do título */
 }
 
-/* Labels de Formulário */
-.label {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 14px;
-    -fx-text-fill: #555555; /* Cinza médio */
+/* Label para boas-vindas (Ex: no PrincipalController) */
+#lblBemVindo {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -success-color;
 }
 
-/* Campos de Texto e Senha */
+/* --- Campos de Texto e Senha --- */
 .text-field, .password-field {
-    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: -surface-color;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 10px;
     -fx-font-size: 14px;
-    -fx-background-color: #FFFFFF; /* Fundo branco */
-    -fx-border-color: #CCCCCC; /* Borda cinza clara */
-    -fx-border-radius: 5px; /* Bordas levemente arredondadas */
-    -fx-padding: 8px 10px; /* Espaçamento interno */
-    -fx-prompt-text-fill: #999999; /* Cor do texto de dica */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0.0, 0, 1); /* Sombra suave para profundidade */
+    -fx-prompt-text-fill: -secondary-color;
+    -fx-transition: -fx-border-color -transition-duration; /* Anima a borda no foco */
 }
 
 .text-field:focused, .password-field:focused {
-    -fx-border-color: #007bff; /* Cor de destaque ao focar (Azul) */
-    -fx-effect: dropshadow(gaussian, rgba(0,123,255,0.2), 8, 0.0, 0, 2); /* Sombra mais pronunciada */
+    -fx-border-color: -focus-color;
+    -fx-border-width: 2px; /* Aumenta a borda ao focar */
 }
 
-/* GridPane de Formulário (ajuste de espaçamento interno) */
-.grid-pane {
-    -fx-padding: 20px; /* Espaçamento interno no grid */
-    -fx-background-color: #FFFFFF; /* Fundo branco para o formulário */
-    -fx-border-radius: 8px; /* Bordas arredondadas para o painel do formulário */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0.0, 0, 5); /* Sombra mais visível para destacar o formulário */
+/* --- ComboBox --- */
+.combo-box {
+    -fx-background-color: -surface-color;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+    -fx-mark-color: -primary-color; /* Cor da seta do dropdown */
+    -fx-transition: -fx-border-color -transition-duration; /* Anima a borda no foco */
 }
 
-/* Botões Gerais */
+.combo-box:focused {
+    -fx-border-color: -focus-color;
+    -fx-border-width: 2px;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 8px 10px;
+    -fx-background-color: -surface-color;
+    -fx-text-fill: -text-color-dark;
+}
+
+.combo-box .list-cell:filled:selected, .combo-box .list-cell:filled:selected:hover {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: -text-color-light;
+}
+
+.combo-box .list-cell:filled:hover {
+    -fx-background-color: derive(-primary-color, 70%); /* Azul mais claro */
+    -fx-text-fill: -text-color-dark;
+}
+
+
+/* --- Botões --- */
 .button {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 15px;
+    -fx-background-color: -primary-color;
+    -fx-text-fill: -text-color-light;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-border-radius: 5px;
     -fx-background-radius: 5px;
-    -fx-padding: 10px 20px;
-    -fx-cursor: hand; /* Ícone de mão ao passar o mouse */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.0, 0, 1);
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand; /* Muda o cursor para mão */
+    /* Adiciona transição para cor de fundo e escala */
+    -fx-transition: -fx-background-color -transition-duration, -fx-scale-x -transition-duration, -fx-scale-y -transition-duration;
 }
 
 .button:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0.0, 0, 2);
+    -fx-background-color: derive(-primary-color, -10%); /* Escurece o azul no hover */
+    -fx-scale-x: 1.02; /* Leve zoom */
+    -fx-scale-y: 1.02;
 }
 
-/* Botão de Entrar (Principal) */
-.button-add { /* Reutilizando a classe existente */
-    -fx-background-color: #007bff; /* Azul vibrante */
-    -fx-text-fill: #FFFFFF; /* Texto branco */
+.button:pressed {
+    -fx-background-color: derive(-primary-color, -20%); /* Fica mais escuro ao pressionar */
+    -fx-scale-x: 0.98; /* Leve encolhimento */
+    -fx-scale-y: 0.98;
 }
 
+/* Botões específicos por função */
+.button-add {
+    -fx-background-color: -success-color;
+    -fx-transition: -fx-background-color -transition-duration, -fx-scale-x -transition-duration, -fx-scale-y -transition-duration;
+}
 .button-add:hover {
-    -fx-background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    -fx-background-color: derive(-success-color, -10%);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+.button-add:pressed {
+    -fx-background-color: derive(-success-color, -20%);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
 }
 
-/* Botão de Cadastrar (Secundário) */
-.button-secondary { /* Classe adicionada no FXML para o botão Cadastrar Professor */
-    -fx-background-color: #6c757d; /* Cinza escuro */
-    -fx-text-fill: #FFFFFF;
+.button-update {
+    -fx-background-color: -primary-color;
+    -fx-transition: -fx-background-color -transition-duration, -fx-scale-x -transition-duration, -fx-scale-y -transition-duration;
+}
+.button-update:hover {
+    -fx-background-color: derive(-primary-color, -10%);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+.button-update:pressed {
+    -fx-background-color: derive(-primary-color, -20%);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
 }
 
-.button-secondary:hover {
-    -fx-background-color: #5a6268; /* Cinza mais escuro ao passar o mouse */
+.button-delete {
+    -fx-background-color: -danger-color;
+    -fx-transition: -fx-background-color -transition-duration, -fx-scale-x -transition-duration, -fx-scale-y -transition-duration;
+}
+.button-delete:hover {
+    -fx-background-color: derive(-danger-color, -10%);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+.button-delete:pressed {
+    -fx-background-color: derive(-danger-color, -20%);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
 }
 
-/* Classe para o botão "Sair" (exemplo, caso precise reutilizar em outras telas) */
 .button-logout {
-    -fx-background-color: #dc3545; /* Vermelho para ações de saída/perigo */
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: -secondary-color;
+    -fx-transition: -fx-background-color -transition-duration, -fx-scale-x -transition-duration, -fx-scale-y -transition-duration;
 }
-
 .button-logout:hover {
-    -fx-background-color: #c82333;
+    -fx-background-color: derive(-secondary-color, -10%);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+.button-logout:pressed {
+    -fx-background-color: derive(-secondary-color, -20%);
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
 }
 
-/* HBox dos botões de ação */
-.hbox-buttons { /* Você pode adicionar essa classe no HBox do FXML */
-    -fx-padding: 10px 0 0 0; /* Espaçamento acima dos botões */
+
+/* --- ListView --- */
+.list-view {
+    -fx-background-color: -surface-color;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
 }
 
-/* Outras classes que você já tenha podem ser mantidas ou ajustadas */
-/* Por exemplo: .label-subtitle para subtítulos */
-.label-subtitle {
-    -fx-font-family: "Segoe UI", sans-serif;
-    -fx-font-size: 16px;
+.list-view .list-cell {
+    -fx-background-color: -surface-color;
+    -fx-padding: 10px;
+    -fx-font-size: 14px;
+    -fx-text-fill: -text-color-dark;
+    -fx-border-color: transparent transparent -border-color transparent; /* Borda inferior sutil */
+    -fx-border-width: 0.5px;
+    -fx-transition: -fx-background-color -transition-duration; /* Transição para cor de fundo */
+}
+
+.list-view .list-cell:last-child {
+    -fx-border-width: 0; /* Remove a borda do último item */
+}
+
+.list-view .list-cell:filled:hover {
+    -fx-background-color: derive(-background-light, -5%); /* Levemente mais escuro no hover */
+    -fx-text-fill: -text-color-dark;
+}
+
+.list-view .list-cell:filled:selected, .list-view .list-cell:filled:selected:hover {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: -text-color-light;
     -fx-font-weight: bold;
-    -fx-text-fill: #444444;
+}
+
+/* --- Panes (GridPane, HBox, VBox) --- */
+.grid-pane {
+    -fx-padding: 10px;
+    -fx-background-color: -surface-color;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5); /* Sombra suave */
+}
+
+/* Estilo para HBox e VBox que contêm botões para centralizá-los */
+.button-bar {
+    -fx-alignment: CENTER;
+    -fx-spacing: 15px;
+    -fx-padding: 10px 0 0 0;
+}
+
+/* --- Outros --- */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane .scroll-bar {
+    -fx-background-color: derive(-background-light, -5%);
+}
+/* style.css (Continue do CSS anterior) */
+
+/* Seção de Avisos na Principal */
+.avisos-section {
+    -fx-background-color: #f0f8ff; /* Um azul bem clarinho para a seção */
+    -fx-border-color: #cfe2f3; /* Borda suave */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-padding: 15px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0.0, 0, 3);
+}
+
+/* Estilo para cada "Flashcard" de Aviso */
+.flashcard-aviso {
+    -fx-background-color: #FFFFFF; /* Fundo branco */
+    -fx-border-color: #DDDDDD;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+    -fx-alignment: center;
+    -fx-min-width: 150px; /* Largura mínima para cada flashcard */
+    -fx-max-width: 180px; /* Largura máxima */
+    -fx-pref-height: 80px; /* Altura preferencial */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.0, 0, 2);
+    -fx-cursor: hand; /* Indica que é clicável */
+    -fx-transition: -fx-scale-x 0.2s, -fx-scale-y 0.2s, -fx-effect 0.2s; /* Transição para o hover */
+}
+
+.flashcard-aviso:hover {
+    -fx-scale-x: 1.03; /* Aumenta um pouco no hover */
+    -fx-scale-y: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.0, 0, 4);
+}
+
+/* Título do Aviso no Flashcard */
+.flashcard-title {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true; /* Quebra o texto se for muito longo */
+    -fx-max-width: 150px; /* Limita a largura para quebra de texto */
+}
+
+/* Data do Aviso no Flashcard */
+.flashcard-date {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 11px;
+    -fx-text-fill: #777777;
+    -fx-padding: 5px 0 0 0; /* Espaçamento acima da data */
 }

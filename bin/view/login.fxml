@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?> <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -35,11 +34,9 @@
                         <PasswordField fx:id="txtSenha" promptText="**********" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
-                <HBox alignment="CENTER" spacing="10.0">
-                    <children>
+                <HBox alignment="CENTER" spacing="10.0"> <children>
                         <Button onAction="#handleLogin" prefHeight="40.0" prefWidth="120.0" text="Entrar" styleClass="button-add" />
-                        <Button onAction="#handleCadastrarProfessor" prefHeight="40.0" prefWidth="180.0" text="Cadastrar Professor" styleClass="button-secondary" />
-                    </children>
+                        <Button onAction="#handleCadastrarProfessor" prefHeight="40.0" prefWidth="180.0" text="Cadastrar Professor" styleClass="button-secondary" /> </children>
                 </HBox>
             </children>
             <padding>

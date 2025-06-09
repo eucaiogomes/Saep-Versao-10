@@ -11,15 +11,21 @@
 <AnchorPane prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrincipalController"
             stylesheets="@style.css">
     <children>
-        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="CENTER" prefHeight="450.0" prefWidth="650.0" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label styleClass="label-title" text="Menu Principal - SAEP" />
                 <Label fx:id="lblBemVindo" text="Bem-vindo(a)!" />
+
+                <VBox alignment="CENTER" spacing="10.0" styleClass="avisos-section">
+                    <Label styleClass="label-subtitle" text="Últimos Avisos:" />
+                    <HBox fx:id="hboxAvisosFlashcards" alignment="CENTER" spacing="15.0">
+                        </HBox>
+                </VBox>
                 <VBox alignment="CENTER" spacing="15.0" styleClass="button-bar">
                     <children>
                         <Button onAction="#handleCadastrarTurma" prefHeight="40.0" prefWidth="280.0" text="Gerenciar Turmas" />
                         <Button onAction="#handleGerenciarAtividade" prefHeight="40.0" prefWidth="280.0" text="Gerenciar Atividades" />
-                        <Button onAction="#handleGerenciarAvisos" prefHeight="40.0" prefWidth="280.0" text="Mural de Avisos" /> </children>
+                        <Button onAction="#handleGerenciarAvisos" prefHeight="40.0" prefWidth="280.0" text="Mural de Avisos Completo" /> </children>
                 </VBox>
                 <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                     <children>

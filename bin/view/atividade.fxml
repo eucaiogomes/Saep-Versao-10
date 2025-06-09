@@ -14,17 +14,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AtividadeController"
-            stylesheets="@style.css"> <children>
-      <VBox prefHeight="600.0" prefWidth="800.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AtividadeController"
+            stylesheets="@style.css">
+   <children>
+      <VBox prefHeight="450.0" prefWidth="650.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Label styleClass="label-title" text="Gerenciar Atividades" /> <GridPane hgap="10.0" vgap="15.0" styleClass="grid-pane"> <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="150.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="280.0" />
-              </columnConstraints>
+            <Label styleClass="label-title" text="Gerenciar Atividades" />
+             <GridPane hgap="10.0" vgap="15.0" styleClass="grid-pane">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="120.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="250.0" />
+                </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -36,11 +39,15 @@
                   <Label text="Descrição:" GridPane.rowIndex="1" />
                   <TextField fx:id="txtDescricaoAtividade" promptText="Detalhamento da atividade" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Turma:" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="cmbTurmaAtividade" onAction="#handleTurmaSelecionada" prefWidth="280.0" promptText="Selecione a turma" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cmbTurmaAtividade" onAction="#handleTurmaSelecionada" prefWidth="250.0" promptText="Selecione a turma" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <HBox spacing="15.0" styleClass="button-bar"> <children>
-                  <Button onAction="#handleAdicionarAtividade" prefHeight="35.0" prefWidth="120.0" text="Adicionar" styleClass="button-add" /> <Button onAction="#handleAtualizarAtividade" prefHeight="35.0" prefWidth="120.0" text="Atualizar" styleClass="button-update" /> <Button onAction="#handleExcluirAtividade" prefHeight="35.0" prefWidth="120.0" text="Excluir" styleClass="button-delete" /> </children>
+            <HBox spacing="15.0" styleClass="button-bar">
+                <children>
+                  <Button onAction="#handleAdicionarAtividade" prefHeight="35.0" prefWidth="120.0" text="Adicionar" styleClass="button-add" />
+                  <Button onAction="#handleAtualizarAtividade" prefHeight="35.0" prefWidth="120.0" text="Atualizar" styleClass="button-update" />
+                  <Button onAction="#handleExcluirAtividade" prefHeight="35.0" prefWidth="120.0" text="Excluir" styleClass="button-delete" />
+                </children>
             </HBox>
             <Label text="Atividades da Turma Selecionada:" />
             <ListView fx:id="listViewAtividades" VBox.vgrow="ALWAYS" />

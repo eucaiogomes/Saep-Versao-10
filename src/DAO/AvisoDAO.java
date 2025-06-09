@@ -147,4 +147,41 @@ public class AvisoDAO {
             throw e;
         }
     }
+    public static List<Aviso> listarUltimosAvisosPorProfessor(int idProfessor, int limit) throws SQLException {
+        List<Aviso> listaAvisos = new ArrayList<>();
+        // Note: Se o professor puder ver avisos de outras turmas que ele não gerencia,
+        // essa query precisaria ser ajustada para incluir JOIN com Turma e Professor.
+        // Por enquanto, assumimos que ele só vê avisos que ele mesmo postou em suas turmas.
+        String sql = "SELECT idAviso, titulo, conteudo, dataPublicacao, Turma_idTurma, Professor_idProfessor " +
+                     "FROM Aviso WHERE Professor_idProfessor = ? ORDER BY dataPublicacao DESC LIMIT ?";
+        try (Connection con = ConexaoBD.conectar();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, idProfessor);
+            stmt.setInt(2, limit);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    LocalDateTime dataPublicacao = null;
+                    Timestamp ts = rs.getTimestamp("dataPublicacao");
+                    if (ts != null) {
+                        dataPublicacao = ts.toLocalDateTime();
+                    }
+
+                    Aviso aviso = new Aviso(
+                        rs.getInt("idAviso"),
+                        rs.getString("titulo"),
+                        rs.getString("conteudo"),
+                        dataPublicacao,
+                        rs.getInt("Turma_idTurma"),
+                        rs.getInt("Professor_idProfessor")
+                    );
+                    listaAvisos.add(aviso);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao listar últimos avisos por professor: " + e.getMessage());
+            throw e;
+        }
+        return listaAvisos;
+    }
+
 }	
